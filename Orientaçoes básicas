@@ -1,0 +1,39 @@
+https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress.git
+
+1 - rodar npm install
+2 - abrir npx cypress run
+3 abrir no navegador npx cypress open
+
+
+4 - Jenkins instalação
+4.1 baixar o jenkins
+4.2 instalar: java -jar jenkins.war --httpPort=9090
+4.3 entrar em localhost:9090
+4.4 incluir senha sugerida
+4.5 selecionar plugin sugerido
+4.6 não precisa criar usuário admin
+4.7 salva endereço
+4.8 inicia
+4.9 vai em configurações e adiciona nova senha
+
+5 - Jenkins criação de jobs
+5.1 menu new item
+5.2 dar um nome para ele
+5.3 marca Freestyle project
+5.4 ok
+5.5 combo build
+5.6 execute windows command
+5.7 cd c:/users/fabio.batista/downloads/desafio_web_wcaquino_cypress
+5.8 npx cypress run > output.txt
+5.9 salvar 
+
+6 - Jenkins parametizar
+6.1 Entrar no item/visão
+6.2 ir no menu configure
+6.3 opção: This project is parameterized
+6.4 opção: String Parameter
+6.5 campo name, campo value
+6.6 opção: Choice parameter
+6.7 campo name: browser; choices: edge, chrome, safari
+6.8 OPÇAO ADVANCED
+7.9 Marcar opção: Use custom workspace, setar c:/users/fabio.batista/downloads/desafio_web_wcaquino_cypress
