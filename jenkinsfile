@@ -17,8 +17,7 @@ pipeline {
         stage('Run Cypress Tests') {
             steps {
                 // Executa os testes Cypress na pasta e2e
-
-                sh './node_modules/.bin/cypress run '
+                bat 'npx cypress run'
             }
         }
     }
