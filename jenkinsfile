@@ -26,7 +26,7 @@ pipeline {
     post {
         always {
             // Arquiva os resultados dos testes, se houver (ajuste o caminho conforme necessário)
-           // archiveArtifacts artifacts: 'cypress/videos/**/*.*, cypress/screenshots/**/*.*', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'cypress/videos/**/*.*, cypress/screenshots/**/*.*', allowEmptyArchive: true
         }
         failure {
             // Publica os logs de falha dos testes, se houver
