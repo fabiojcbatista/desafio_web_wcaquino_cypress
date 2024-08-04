@@ -6,61 +6,37 @@ pipeline {
         NODE_VERSION = '14.x'
     }
 
-    options {
-        ansiColor('xterm')
-    }
-
     stages {
         stage('Clone Repository') {
             steps {
-                script {
-                    ansiColor('xterm') {
-                        // Clona o repositório a partir do GitHub usando credenciais
-                        git 'https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress.git'
-                    }
-                }
+                // Clona o repositório a partir do GitHub usando credenciais
+                git 'https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                script {
-                    ansiColor('xterm') {
-                        // Instala as dependências do Cypress
-                        bat 'npm install'
-                    }
-                }
+                // Instala as dependências do Cypress
+                bat 'npm install'
             }
         }
 
         stage('Run Cypress Tests') {
             steps {
-                script {
-                    ansiColor('xterm') {
-                        // Executa os testes Cypress na pasta e2e
-                        bat 'npx cypress run --spec "cypress/e2e/*.*"'
-                    }
-                }
+                // Executa os testes Cypress na pasta e2e
+                bat 'npx cypress run --spec "cypress/e2e/*.*"'
             }
         }
     }
 
     post {
         always {
-            script {
-                    ansiColor('xterm') {
-                    // Arquiva os resultados dos testes, se houver (ajuste o caminho conforme necessário)
-                    archiveArtifacts artifacts: 'cypress/videos/*.*, cypress/screenshots/*.*', allowEmptyArchive: true
-                    }
-            }
+            // Arquiva os resultados dos testes, se houver (ajuste o caminho conforme necessário)
+            archiveArtifacts artifacts: 'cypress/videos/*.*, cypress/screenshots/*.*', allowEmptyArchive: true
         }
         failure {
-            script {
-                    ansiColor('xterm') {
-                    // Publica os logs de falha dos testes, se houver
-                    echo 'Build failed! Check the test results for more details.'
-                    }
-            }
+            // Publica os logs de falha dos testes, se houver
+            echo 'Build failed! Check the test results for more details.'
         }
     }
 }
