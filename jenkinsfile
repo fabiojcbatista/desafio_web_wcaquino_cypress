@@ -4,16 +4,13 @@ pipeline {
     environment {
         // Define a versão do Node.js a ser utilizada
         NODE_VERSION = '14.x'
-         // Adicione variáveis de ambiente se necessário, como credenciais do GitHub
-        GITHUB_CREDENTIALS_ID = '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'
     }
 
     stages {
         stage('Clone Repository') {
             steps {
                 // Clona o repositório a partir do GitHub usando credenciais
-                git credentialsId: env.GITHUB_CREDENTIALS_ID, url: 'https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress.git'
-
+                git 'https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress.git'
             }
         }
 
