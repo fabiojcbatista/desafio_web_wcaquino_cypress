@@ -8,6 +8,6 @@ describe('Login', () => {
 
   it('Fazer login com falha', () => {
     cy.login(user.fakerEmailAddress, user.fakerPassword)
-    cy.contains(`Problemas com o login do usuário`).should('be.visible')
+    cy.contains(`Problemas com o login do usuárioo`).should('be.visible')
   })
 })
