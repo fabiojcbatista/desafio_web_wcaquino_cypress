@@ -36,4 +36,20 @@ https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress.git
 6.6 opção: Choice parameter
 6.7 campo name: browser; choices: edge, chrome, safari
 6.8 OPÇAO ADVANCED
-7.9 Marcar opção: Use custom workspace, setar c:/users/fabio.batista/downloads/desafio_web_wcaquino_cypress
+6.9 Marcar opção: Use custom workspace, setar c:/users/fabio.batista/downloads/desafio_web_wcaquino_cypress
+cd %WORKSPACE%
+npx cypress run>%output-file%.txt
+echo %browser%
+--browser %browser%
+
+7 - Jenkins criação de pipeline
+7.1 menu new item
+7.2 dar um nome para ele
+7.3 marca pipeline
+7.4 ok
+7.5 Em pipeline script
+7.6 marca pipeline script from scm
+7.7  scm > git
+7.8 https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress
+7.9 Gerar token
+ git > settings > developer settings > personal access token > generate > New personal access token (classic) > jenkins-token > marca repo > genrerate > 
