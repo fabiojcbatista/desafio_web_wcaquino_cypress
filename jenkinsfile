@@ -13,16 +13,7 @@ pipeline {
                 git 'https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress.git'
             }
         }
-        stage('Install Dependencies') {
-            steps {
-                // Instala a versão específica do Node.js
-                sh 'curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | bash -'
-                sh 'apt-get install -y nodejs'
-                
-                // Instala as dependências do Cypress
-                sh 'npm install'
-            }
-        }
+       
         stage('Run Cypress Tests') {
             steps {
                 // Executa os testes Cypress na pasta e2e
