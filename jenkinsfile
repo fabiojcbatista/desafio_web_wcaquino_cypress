@@ -5,6 +5,10 @@ pipeline {
         // Define a versão do Node.js a ser utilizada
         NODE_VERSION = '14.x'
     }
+    
+    options {
+        ansiColor('xterm')
+    }
 
     stages {
         stage('Clone Repository') {
