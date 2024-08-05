@@ -29,14 +29,45 @@ pipeline {
         }
     }
 
+      stage('Setup Node.js') {
+            steps {
+                // Instalar Node.js
+                script {
+                    def nodejsHome = tool name: 'NodeJS', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                    env.PATH = "${nodejsHome}/bin:${env.PATH}"
+                }
+            }
+      }
+
+        stage('Install Dependencies') {
+            steps {
+                // Instalar dependências do projeto
+                sh 'npm install'
+            }
+        }
+
+        stage('Run Cypress Tests') {
+            steps {
+                // Executar os testes Cypress
+                sh 'npx cypress run --spec "cypress/e2e/**/*.js"'
+            }
+        }
+
+
     post {
         always {
-            // Arquiva os resultados dos testes, se houver (ajuste o caminho conforme necessário)
-            archiveArtifacts artifacts: 'cypress/videos/*.*, cypress/screenshots/*.*', allowEmptyArchive: true
+            // Arquivar os resultados dos testes
+            archiveArtifacts artifacts: 'cypress/screenshots/**/*', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'cypress/videos/**/*', allowEmptyArchive: true
+            junit 'cypress/results/*.xml'
+             mail to: 'fabiojcbweb@gmail.com',
+                 subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
+                 body: "Check the Jenkins job for details: ${env.BUILD_URL}"
         }
         failure {
-            // Publica os logs de falha dos testes, se houver
-            echo 'Build failed! Check the test results for more details.'
+            mail to: 'fabiojcbweb@gmail.com',
+                 subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
+                 body: "Check the Jenkins job for details: ${env.BUILD_URL}"
         }
     }
 }
