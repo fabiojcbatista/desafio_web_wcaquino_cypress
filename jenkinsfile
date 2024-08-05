@@ -14,21 +14,6 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                // Instala as dependências do Cypress
-                bat 'npm install'
-            }
-        }
-
-        stage('Run Cypress Tests') {
-            steps {
-                // Executa os testes Cypress na pasta e2e
-                bat 'npx cypress run --spec "cypress/e2e/*.*"'
-            }
-        }
-    }
-
       stage('Setup Node.js') {
             steps {
                 // Instalar Node.js
@@ -39,20 +24,19 @@ pipeline {
             }
       }
 
-        stage('Install Dependencies2') {
+        stage('Install Dependencies2=') {
             steps {
                 // Instalar dependências do projeto
                 sh 'npm install'
             }
         }
 
-        stage('Run Cypress Tests2') {
+        stage('Run Cypress Tests') {
             steps {
                 // Executar os testes Cypress
-                sh 'npx cypress run --spec "cypress/e2e/**/*.js"'
+                sh 'npx cypress run --spec "cypress/e2e/*.*"'
             }
         }
-
 
     post {
         always {
@@ -70,4 +54,4 @@ pipeline {
                  body: "Check the Jenkins job for details: ${env.BUILD_URL}"
         }
     }
-}
+    }
