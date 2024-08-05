@@ -44,14 +44,14 @@ pipeline {
             archiveArtifacts artifacts: 'cypress/videos/*.*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'cypress/screenshots/*.*', allowEmptyArchive: true
             //junit 'cypress/results/*.xml'
-            mail to: 'fabiojcbweb@gmail.com',
+           /* mail to: 'fabiojcbweb@gmail.com',
                  subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
-                 body: "Check the Jenkins job for details: ${env.BUILD_URL}"
+                 body: "Check the Jenkins job for details: ${env.BUILD_URL}"*/
         }
         failure {
-            mail to: 'fabiojcbweb@gmail.com',
+           /* mail to: 'fabiojcbweb@gmail.com',
                  subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
-                 body: "Check the Jenkins job for details: ${env.BUILD_URL}"
+                 body: "Check the Jenkins job for details: ${env.BUILD_URL}"*/
         }
     }
 }
