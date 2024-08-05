@@ -41,9 +41,9 @@ pipeline {
     post {
         always {
             // Arquivar os resultados dos testes
-            archiveArtifacts artifacts: 'cypress/screenshots/**/*', allowEmptyArchive: true
-            archiveArtifacts artifacts: 'cypress/videos/**/*', allowEmptyArchive: true
-            junit 'cypress/results/*.xml'
+            archiveArtifacts artifacts: 'cypress/videos/*.*', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'cypress/screenshots/*.*', allowEmptyArchive: true
+            //junit 'cypress/results/*.xml'
             mail to: 'fabiojcbweb@gmail.com',
                  subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
                  body: "Check the Jenkins job for details: ${env.BUILD_URL}"
