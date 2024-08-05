@@ -14,37 +14,30 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies2=') {
+        stage('Install Dependencies') {
             steps {
-                // Instalar dependências do projeto
-                sh 'npm install'
+                // Instala as dependências do Cypress
+                bat 'npm install'
             }
         }
 
         stage('Run Cypress Tests') {
             steps {
-                // Executar os testes Cypress
-                sh 'npx cypress run --spec "cypress/e2e/*.*"'
+                // Executa os testes Cypress na pasta e2e
+                bat 'npx cypress run --spec "cypress/e2e/*.*"'
             }
         }
     }
+
     post {
         always {
-            // Arquivar os resultados dos testes
-            archiveArtifacts artifacts: 'cypress/videos/*.*', allowEmptyArchive: true
+            // Arquiva os resultados dos testes, se houver (ajuste o caminho conforme necessário)
+             archiveArtifacts artifacts: 'cypress/videos/*.*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'cypress/screenshots/*.*', allowEmptyArchive: true
-           //junit 'cypress/results/*.xml'
-           /* mail to: 'fabiojcbweb@gmail.com',
-                 subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
-                 body: "Check the Jenkins job for details: ${env.BUILD_URL}"*/
         }
         failure {
-           /* mail to: 'fabiojcbweb@gmail.com',
-                 subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
-                 body: "Check the Jenkins job for details: ${env.BUILD_URL}"*/
             // Publica os logs de falha dos testes, se houver
             echo 'Build failed! Check the test results for more details.'
         }
     }
 }
-
