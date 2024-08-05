@@ -14,7 +14,7 @@ pipeline {
             }
         }
 
-      stage('Setup Node.js') {
+        stage('Setup Node.js') {
             steps {
                 // Instalar Node.js
                 script {
@@ -22,7 +22,7 @@ pipeline {
                     env.PATH = "${nodejsHome}/bin:${env.PATH}"
                 }
             }
-      }
+        }
 
         stage('Install Dependencies2=') {
             steps {
@@ -37,14 +37,14 @@ pipeline {
                 sh 'npx cypress run --spec "cypress/e2e/*.*"'
             }
         }
-
+    }
     post {
         always {
             // Arquivar os resultados dos testes
             archiveArtifacts artifacts: 'cypress/screenshots/**/*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'cypress/videos/**/*', allowEmptyArchive: true
             junit 'cypress/results/*.xml'
-             mail to: 'fabiojcbweb@gmail.com',
+            mail to: 'fabiojcbweb@gmail.com',
                  subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
                  body: "Check the Jenkins job for details: ${env.BUILD_URL}"
         }
@@ -54,5 +54,5 @@ pipeline {
                  body: "Check the Jenkins job for details: ${env.BUILD_URL}"
         }
     }
-    }
 }
+
