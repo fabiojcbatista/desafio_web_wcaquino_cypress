@@ -32,7 +32,7 @@ pipeline {
     post {
         always {
             // Arquiva os resultados dos testes
-             archiveArtifacts artifacts: 'cypress/videos/*.*', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'cypress/videos/*.*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'cypress/screenshots/*.*', allowEmptyArchive: true
         }
         failure {
