@@ -39,14 +39,14 @@ pipeline {
             }
       }
 
-        stage('Install Dependencies') {
+        stage('Install Dependencies2') {
             steps {
                 // Instalar dependências do projeto
                 sh 'npm install'
             }
         }
 
-        stage('Run Cypress Tests') {
+        stage('Run Cypress Tests2') {
             steps {
                 // Executar os testes Cypress
                 sh 'npx cypress run --spec "cypress/e2e/**/*.js"'
