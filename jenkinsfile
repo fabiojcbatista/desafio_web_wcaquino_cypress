@@ -36,7 +36,7 @@ pipeline {
             archiveArtifacts artifacts: 'cypress/screenshots/*.*', allowEmptyArchive: true
         }
         failure {
-            // Publica os logs de falha
+            // Log de falha
             echo 'Build failed! Check the test results for more details.'
         }
     }
