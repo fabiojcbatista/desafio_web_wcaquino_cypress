@@ -52,6 +52,8 @@ pipeline {
            /* mail to: 'fabiojcbweb@gmail.com',
                  subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
                  body: "Check the Jenkins job for details: ${env.BUILD_URL}"*/
+                  // Publica os logs de falha dos testes, se houver
+            echo 'Build failed! Check the test results for more details.'
         }
     }
 }
