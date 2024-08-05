@@ -14,16 +14,6 @@ pipeline {
             }
         }
 
-        stage('Setup Node.js') {
-            steps {
-                // Instalar Node.js
-                script {
-                    def nodejsHome = tool name: 'NodeJS', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-                    env.PATH = "${nodejsHome}/bin:${env.PATH}"
-                }
-            }
-        }
-
         stage('Install Dependencies2=') {
             steps {
                 // Instalar dependências do projeto
@@ -43,7 +33,7 @@ pipeline {
             // Arquivar os resultados dos testes
             archiveArtifacts artifacts: 'cypress/videos/*.*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'cypress/screenshots/*.*', allowEmptyArchive: true
-            //junit 'cypress/results/*.xml'
+           //junit 'cypress/results/*.xml'
            /* mail to: 'fabiojcbweb@gmail.com',
                  subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
                  body: "Check the Jenkins job for details: ${env.BUILD_URL}"*/
@@ -52,7 +42,7 @@ pipeline {
            /* mail to: 'fabiojcbweb@gmail.com',
                  subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
                  body: "Check the Jenkins job for details: ${env.BUILD_URL}"*/
-                  // Publica os logs de falha dos testes, se houver
+            // Publica os logs de falha dos testes, se houver
             echo 'Build failed! Check the test results for more details.'
         }
     }
