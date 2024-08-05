@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        // Define a versão do Node.js a ser utilizada
+        // Define a versão do Node.js
         NODE_VERSION = '14.x'
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                // Clona o repositório a partir do GitHub usando credenciais
+                // Clona o repositório a partir do GitHub
                 git 'https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress.git'
             }
         }
