@@ -6,7 +6,16 @@ pipeline {
         NODE_VERSION = '14.x'
     }
 
+    options {
+        ansiColor('xterm')
+    }
     stages {
+        stage('Build') {
+            steps {
+                echo '\033[34mHello\033[0m \033[33mcolorful\033[0m \033[35mworld!\033[0m'
+            }
+        }
+        
         stage('Clone Repository') {
             steps {
                 // Clona o repositório a partir do GitHub
