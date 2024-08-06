@@ -36,19 +36,19 @@ pipeline {
            // archiveArtifacts artifacts: 'cypress/screenshots/*.*', allowEmptyArchive: true
         }
         failure {
-            emailext(
+             emailext([
             from: 'fabiojcbweb@gmail.com',
             to: 'fabiojcbweb@gmail.com',
-            subject: 'Cypress Tests Passed',
+            subject: 'Cypress Tests Failed',
             body: 'Check the Jenkins job for details',
             // attachmentsPattern: 'cypress/screenshots/**/*,cypress/videos/**/*',
-            //attachmentsPattern: 'cypress/videos/**/*',
+          //attachmentsPattern: 'cypress/videos/**/*',
                 mimeType: 'text/html',
-                attachLog: true
-            )
+                recipientProviders: [developers(), requestor()]
+            ])
         }
         success {
-            emailext(
+            emailext([
             from: 'fabiojcbweb@gmail.com',
             to: 'fabiojcbweb@gmail.com',
             subject: 'Cypress Tests Passed',
@@ -56,8 +56,8 @@ pipeline {
             // attachmentsPattern: 'cypress/screenshots/**/*,cypress/videos/**/*',
           //attachmentsPattern: 'cypress/videos/**/*',
                 mimeType: 'text/html',
-                attachLog: true
-            )
+                recipientProviders: [developers(), requestor()]
+            ])
         }
     }
 }
