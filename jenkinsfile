@@ -36,20 +36,20 @@ pipeline {
             archiveArtifacts artifacts: 'cypress/screenshots/*.*', allowEmptyArchive: true
         }
         failure {
-            emailext(
+            emailext
             to: 'fabiojcbweb@gmail.com',
             subject: 'Cypress Tests Failed',
             body: 'Check the Jenkins job for details',
             attachmentsPattern: 'cypress/screenshots/*.*,cypress/videos/*.*'
-        )
+        
         }
         success {
-            emailext(
+            emailext
             to: 'fabiojcbweb@gmail.com',
             subject: 'Cypress Tests Passed',
             body: 'Check the Jenkins job for details',
             attachmentsPattern: 'cypress/screenshots/*.*,cypress/videos/*.*'
-        )
+        
         }
     }
 }
