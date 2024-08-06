@@ -37,22 +37,24 @@ pipeline {
         }
         failure {
             emailext(
+            from: 'fabiojcbweb@gmail.com',
             to: 'fabiojcbweb@gmail.com',
-            subject: 'Cypress Tests Failed',
+            subject: 'Cypress Tests Passed',
             body: 'Check the Jenkins job for details',
-          // attachmentsPattern: 'cypress/screenshots/**/*,cypress/videos/**/*',
-          attachmentsPattern: 'cypress/videos/**/*',
+            // attachmentsPattern: 'cypress/screenshots/**/*,cypress/videos/**/*',
+            //attachmentsPattern: 'cypress/videos/**/*',
                 mimeType: 'text/html',
                 attachLog: true
             )
         }
         success {
             emailext(
+            from: 'fabiojcbweb@gmail.com',
             to: 'fabiojcbweb@gmail.com',
             subject: 'Cypress Tests Passed',
             body: 'Check the Jenkins job for details',
             // attachmentsPattern: 'cypress/screenshots/**/*,cypress/videos/**/*',
-          attachmentsPattern: 'cypress/videos/**/*',
+          //attachmentsPattern: 'cypress/videos/**/*',
                 mimeType: 'text/html',
                 attachLog: true
             )
