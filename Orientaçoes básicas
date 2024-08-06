@@ -7,7 +7,7 @@ https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress.git
 
 4 - Jenkins instalação
 4.1 baixar o jenkins
-4.2 instalar: java -jar jenkins.war --httpPort=9090
+4.2 instalar: java -Dfile.encoding=UTF-8 -jar jenkins.war --httpPort=9090
 4.3 entrar em localhost:9090
 4.4 incluir senha sugerida
 4.5 selecionar plugin sugerido
