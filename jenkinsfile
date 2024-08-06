@@ -38,16 +38,16 @@ pipeline {
         failure {
             emailext(
             to: 'fabiojcbweb@gmail.com',
-            subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
-            body: "Check the Jenkins job for details: ${env.BUILD_URL}",
+            subject: 'Cypress Tests Failed',
+            body: 'Check the Jenkins job for details',
             attachmentsPattern: 'cypress/screenshots/*.*,cypress/videos/*.*'
         )
         }
         success {
             emailext(
-             to: 'fabiojcbweb@gmail.com',
-            subject: "Cypress Tests Passed: ${currentBuild.fullDisplayName}",
-            body: "Check the Jenkins job for details: ${env.BUILD_URL}",
+            to: 'fabiojcbweb@gmail.com',
+            subject: 'Cypress Tests Passed',
+            body: 'Check the Jenkins job for details',
             attachmentsPattern: 'cypress/screenshots/*.*,cypress/videos/*.*'
         )
         }
