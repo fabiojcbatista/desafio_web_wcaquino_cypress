@@ -43,8 +43,7 @@ pipeline {
             body: 'Check the Jenkins job for details',
             // attachmentsPattern: 'cypress/screenshots/**/*,cypress/videos/**/*',
           //attachmentsPattern: 'cypress/videos/**/*',
-                mimeType: 'text/html',
-                recipientProviders: [developers(), requestor()]
+                mimeType: 'text/html'
             ])
         }
         success {
@@ -55,8 +54,7 @@ pipeline {
             body: 'Check the Jenkins job for details',
             // attachmentsPattern: 'cypress/screenshots/**/*,cypress/videos/**/*',
           //attachmentsPattern: 'cypress/videos/**/*',
-                mimeType: 'text/html',
-                recipientProviders: [developers(), requestor()]
+                mimeType: 'text/html'
             ])
         }
     }
