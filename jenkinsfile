@@ -36,8 +36,20 @@ pipeline {
             archiveArtifacts artifacts: 'cypress/screenshots/*.*', allowEmptyArchive: true
         }
         failure {
-            // Log de falha
-            echo 'Build failed! Check the test results for more details.'
+            emailext(
+            to: 'fabiojcbweb@gmail.com',
+            subject: "Cypress Tests Failed: ${currentBuild.fullDisplayName}",
+            body: "Check the Jenkins job for details: ${env.BUILD_URL}",
+            attachmentsPattern: 'cypress/screenshots/*.*,cypress/videos/*.*'
+        )
+        }
+        success {
+            emailext(
+             to: 'fabiojcbweb@gmail.com',
+            subject: "Cypress Tests Passed: ${currentBuild.fullDisplayName}",
+            body: "Check the Jenkins job for details: ${env.BUILD_URL}",
+            attachmentsPattern: 'cypress/screenshots/*.*,cypress/videos/*.*'
+        )
         }
     }
 }

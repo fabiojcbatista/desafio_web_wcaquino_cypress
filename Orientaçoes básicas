@@ -53,3 +53,40 @@ echo %browser%
 7.8 https://github.com/fabiojcbatista/desafio_web_wcaquino_cypress
 7.9 Gerar token
  git > settings > developer settings > personal access token > generate > New personal access token (classic) > jenkins-token > marca repo > genrerate > 
+
+
+8.0 configrurar email
+8.1 baixar plugin email extension
+8.2 ir em jenkins > manager > sytem
+8.3 em stmp server: 
+Passo a Passo para Configurar SMTP no Jenkins
+Acesse o Jenkins:
+
+Abra seu navegador e vá para a URL do seu servidor Jenkins.
+Faça login com suas credenciais de administrador.
+Acesse a Configuração do Sistema:
+
+Clique em Gerenciar Jenkins no menu à esquerda.
+Em seguida, clique em Configurar o Sistema.
+Configurar SMTP para Notificações de Email:
+
+Role para baixo até encontrar a seção Extended E-mail Notification. Se você não a encontrar, procure pela seção E-mail Notification. A primeira geralmente está disponível se você instalou o Email Extension Plugin.
+Preencha os campos necessários conforme descrito abaixo:
+Campos para Configurar
+E-mail Notification
+SMTP server: Insira o endereço do servidor SMTP que você deseja usar. Por exemplo, para o Gmail seria smtp.gmail.com.
+Default user e-mail suffix: Insira o sufixo de e-mail padrão, como @example.com.
+Extended E-mail Notification
+SMTP server: Novamente, insira o endereço do servidor SMTP.
+
+Default user e-mail suffix: O sufixo de e-mail padrão, como @example.com.
+
+SMTP Authentication:
+
+User Name: Insira o nome de usuário para autenticação SMTP (por exemplo, seu endereço de e-mail completo).
+Password: Insira a senha para autenticação SMTP. Se estiver usando um serviço como o Gmail, você pode precisar usar uma senha de app.
+Use SSL: Marque esta opção se seu servidor SMTP requer SSL (comum para serviços como Gmail).
+
+SMTP Port: Insira a porta do servidor SMTP. Para Gmail, é 465 para SSL e 587 para TLS.
+
+Charset: Geralmente, UTF-8 é uma boa escolha.
